@@ -1,6 +1,7 @@
 package io.github.ouyi.springsecuritydbdemo.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "role")
@@ -13,6 +14,9 @@ public class Role {
 
     @Column(name = "role")
     private String role;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "roles")
+    private Set<User> users;
 
     public Role() {
     }
@@ -31,5 +35,13 @@ public class Role {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 }
