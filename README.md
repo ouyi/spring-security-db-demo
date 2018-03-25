@@ -16,17 +16,17 @@ Execute the Gradle task `bootRun` in an IDE, or run in a terminal `./gradlew boo
 
 Access the following URLs with a browser and compare the expected results:
 
-- `http://localhost:8080/demo/hello/all` => `Hello null!`
+- `http://localhost:8080/demo/hello/all`: `Hello null!`
 
 - `http://localhost:8080/demo/hello/auth/user`
     - `REDIRECT http://localhost:8080/demo/login`
         - Login successful (user and pass: `user:user`): `Hello User!`
         - Login failed: `http://localhost:8080/demo/login?error`
 
-- `http://localhost:8080/demo/hello/auth/admin` => `type=Forbidden, status=403`
+- `http://localhost:8080/demo/hello/auth/admin`: `type=Forbidden, status=403`
 
 - `http://localhost:8080/demo/login`
     - Login successful (user and pass: `root:root`): `type=Not Found, status=404`
     - Login failed: `http://localhost:8080/demo/login?error`
 
-- `http://localhost:8080/demo/hello/auth/admin` => `Hello Admin!`
+- `http://localhost:8080/demo/hello/auth/admin`: `Hello Admin!`
