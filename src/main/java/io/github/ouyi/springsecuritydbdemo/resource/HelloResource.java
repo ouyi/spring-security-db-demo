@@ -5,18 +5,29 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping("/rest/hello")
+import java.security.Principal;
+
+@RequestMapping("/hello")
 @RestController
 public class HelloResource {
 
     @GetMapping("/all")
-    public String hello() {
-        return "Hello!";
+    public String helloAll(Principal principal) {
+        return getMessage(principal);
+    }
+
+    @GetMapping("/auth/user")
+    public String helloUser(Principal principal) {
+        return getMessage(principal);
     }
 
     @PreAuthorize("hasAnyRole('ADMIN')")
-    @GetMapping("/secured/all")
-    public String securedHello() {
-        return "Secured hello!";
+    @GetMapping("/auth/admin")
+    public String helloAdmin(Principal principal) {
+        return getMessage(principal);
+    }
+
+    private String getMessage(Principal principal) {
+        return String.format("Hello %s!", principal == null ? "null" : principal.getName());
     }
 }

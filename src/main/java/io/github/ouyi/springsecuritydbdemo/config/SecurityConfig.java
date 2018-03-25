@@ -33,8 +33,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
+
+        // "**/auth/**" does not work, e.g., "/hello/auth/user" was not matched
         http.authorizeRequests()
-                .antMatchers("**/secured/**").authenticated()
+                .antMatchers("/**/auth/**").authenticated()
                 .anyRequest().permitAll()
                 .and().formLogin().permitAll();
     }

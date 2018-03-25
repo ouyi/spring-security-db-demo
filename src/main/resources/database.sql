@@ -25,8 +25,8 @@ CREATE TABLE IF NOT EXISTS user (
 
 INSERT INTO user (user_id, active, email, last_name, first_name, username, password)
 VALUES
-	(1,1,'admin@gmail.com','s','Sam', 'sam', 'sam'),
-	(2,1,'admin@gmail.com','s','youtube', 'youtube', 'youtube');
+	(1,1,'admin@gmail.com','A','Admin', 'root', 'root'),
+	(2,1,'user@gmail.com','U','User', 'user', 'user');
 
 CREATE TABLE IF NOT EXISTS user_role (
   user_id int(11) NOT NULL,
