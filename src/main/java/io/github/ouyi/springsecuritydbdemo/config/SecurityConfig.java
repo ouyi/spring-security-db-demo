@@ -34,11 +34,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
 
+        // @formatter:off
         // "**/auth/**" does not work, e.g., "/hello/auth/user" was not matched
         http.authorizeRequests()
                 .antMatchers("/**/auth/**").authenticated()
                 .anyRequest().permitAll()
-                .and().formLogin().permitAll();
+            .and()
+                .formLogin().permitAll();
+        // @formatter:on
     }
 
     public PasswordEncoder getPasswordEncoder() {
